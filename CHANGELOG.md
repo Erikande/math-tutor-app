@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.4] - 2025-05-27
+
+### Testing
+
+- **Jasmine Type Resolution**
+  - Explicitly declared Jasmine's `expect()` to avoid VS Code squiggles caused by Cypress/Chai type overlap
+  - Scoped Cypress types to `*.cy.ts` only via `cypress/tsconfig.json` to prevent duplicate identifier conflicts
+  - Confirmed no effect on `ng test` or `tsc` output; fixes are TypeScript-server and editor specific
+
 ## [0.4.3] - 2025-05-22
 
 ### Chore
