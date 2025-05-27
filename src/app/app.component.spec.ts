@@ -1,4 +1,15 @@
 /// <reference types="jasmine" />
+/**
+ * Jasmine matcher fix for legacy Angular 11 + Cypress mixed-type environments.
+ * VS Code may incorrectly apply Chai's `expect()` and `Assertion` types from Cypress,
+ * leading to false errors like "Property 'toBeTruthy' does not exist on type 'Assertion'".
+ *
+ * This declaration ensures Jasmine’s global `expect()` is properly resolved,
+ * so matchers like `toBeTruthy()` and `toHaveBeenCalled()` are type-safe.
+ */
+
+declare function expect(actual: any): jasmine.Matchers<any>;
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
