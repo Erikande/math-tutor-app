@@ -1,8 +1,22 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "target": "es2015",
+    "lib": ["es2015", "dom"],
     "types": ["cypress"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "module": "esnext",
     "noEmit": true
   },
-  "include": ["**/*.cy.ts"]
+  "include": [
+    "**/*.ts",
+    "support/commands.d.ts",
+    "**/*.d.ts"
+  ],
+  "exclude": [
+    "../src/**/*.spec.ts",
+    "../dist",
+    "../out-tsc"
+  ]
 }
