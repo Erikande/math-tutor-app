@@ -17,8 +17,8 @@ Cypress.Commands.add('login', (user) => {
 
 // Waits until x-value and y-value are populated — used in beforeEach()
 Cypress.Commands.add('waitForMathChallenge', () => {
-  cy.get('[data-testid="x-value"]').should('not.be.empty');
-  cy.get('[data-testid="y-value"]').should('not.be.empty');
+  cy.get(selectors.xValue).should('not.be.empty');
+  cy.get(selectors.yValue).should('not.be.empty');
 });
 
 // Asserts that a success toast is visible and contains the expected text.
