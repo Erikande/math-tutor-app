@@ -28,6 +28,15 @@ This document outlines the testing approach for the Math Tutor application. It i
 
 ## Test Types and Tools
 
+## Selector Strategy
+
+To ensure robust and stable UI tests, all critical interactive elements (inputs, buttons, toast containers) are annotated with `data-testid` attributes. These attributes:
+
+- Provide consistent selectors for Cypress E2E tests
+- Remain stable across refactors and styling changes
+- Are referenced centrally in `cypress/support/selectors/*.json` files for reuse
+
+
 | Type   | Tooling           | Target                                                 |
 | ------ | ----------------- | ------------------------------------------------------ |
 | Unit   | Jasmine + Karma   | AppComponent logic (input handling, answer evaluation) |
