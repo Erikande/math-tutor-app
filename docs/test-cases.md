@@ -6,12 +6,12 @@ These are manual test cases covering key UI flows, negative paths, and edge inpu
 
 ## Core Functionality
 
-| ID   | Scenario                       | Steps                              | Expected Result                           |
-| ---- | ------------------------------ | ---------------------------------- | ----------------------------------------- |
-| TC01 | Correct input                  | Enter correct sum → Click "Answer" | Alert: "Correct!"                         |
-| TC02 | Incorrect input                | Enter wrong value → Click "Answer" | Alert: "Incorrect!"                       |
-| TC03 | Empty input                    | Leave input blank → Click "Answer" | Button stays disabled                     |
-| TC04 | Non-numeric characters blocked | Attempt to enter `abc`, `@`, etc.  | Input ignores characters; nothing appears |
+| ID | Scenario | Steps | Expected Result | Coverage |
+| --- | --- | --- | --- | --- |
+| TC01 | Correct input | Enter correct sum → Click "Answer" | Alert: "Correct!" | ✅ Cypress |
+| TC02 | Incorrect input | Enter wrong value → Click "Answer" | Alert: "Incorrect!" | ✅ Cypress |
+| TC03 | Empty input | Leave input blank → Click "Answer" | Button stays disabled | ✅ Cypress |
+| TC04 | Non-numeric characters blocked | Attempt to enter `abc`, `@`, etc. | Input ignores characters; nothing appears | ✅ Cypress |
 
 ---
 
@@ -22,15 +22,15 @@ The following test cases include negative paths (e.g., invalid or incomplete inp
 
 ## Edge Behavior
 
-| ID   | Scenario                                                 | Steps                                               | Expected Result                                                 |
-| ---- | -------------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------------------- |
-| TC09 | Typing `e` or `-` alone                                  | Enter `e` or `-` into the input field               | Input accepts character, but "Answer" button stays disabled     |
-| TC10 | Button enables on valid input                            | Type a number (e.g., `4`)                           | "Answer" button becomes enabled                                 |
-| TC11 | Enter signed number (`-5`)                               | Type `-5` (assuming the correct answer is positive) | "Answer" button becomes enabled; on submit, alert: "Incorrect!" |
-| TC12 | Malformed input like `+5+2`                              | Enter `+5+2` into the input field                   | Input is accepted visually; button stays disabled               |
-| TC13 | Leading plus sign in valid number (`+8`) _(manual-only)_ | Enter `+8` (assuming the answer is 8)               | Button becomes enabled; on submit, alert: "Correct!"            |
-| TC14 | Decimal input (`3.14`)                                   | Enter `3.14` into the input field                   | Button becomes enabled; submission triggers alert               |
-| TC15 | Parses prefix of malformed input                         | Enter `3abc`, `4.2.2`, or `5e+4x` into field        | Input displays prefix only (`3`, `4.2`, `5e+4`)                 |
+| ID | Scenario | Steps | Expected Result | Coverage |
+| --- | --- | --- | --- | --- |
+| TC09 | Typing `e` or `-` alone | Enter `e` or `-` into the input field | Input accepts character, but "Answer" button stays disabled |  |
+| TC10 | Button enables on valid input | Type a number (e.g., `4`) | "Answer" button becomes enabled | ✅ Jasmine (unit logic), 🧪 Cypress (UI behavior) |
+| TC11 | Enter signed number (`-5`) | Type `-5` (assuming the correct answer is positive) | "Answer" button becomes enabled; on submit, alert: "Incorrect!" | ✅ Jasmine (unit logic), 🧪 Cypress (UI behavior) |
+| TC12 | Malformed input like `+5+2` | Enter `+5+2` into the input field | Input is accepted visually; button stays disabled |  |
+| TC13 | Leading plus sign in valid number (`+8`) _(manual-only)_ | Enter `+8` (assuming the answer is 8) | Button becomes enabled; on submit, alert: "Correct!" |  |
+| TC14 | Decimal input (`3.14`) | Enter `3.14` into the input field | Button becomes enabled; submission triggers alert |  |
+| TC15 | Parses prefix of malformed input | Enter `3abc`, `4.2.2`, or `5e+4x` into field | Input displays prefix only (`3`, `4.2`, `5e+4`) |  |
 
 ---
 
