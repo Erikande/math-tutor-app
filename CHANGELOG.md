@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.1] - 2025-06-19
+
+### Chore
+
+- **deps**: Upgrade all `@angular/*` packages to `19.2.8` for compatibility with `@angular/flex-layout@15.0.0-beta.42`
+- **typescript**: Resolved TS6305 build mode errors by explicitly building `tsconfig.spec.json` and clearing old emit state
+- **tests**: Confirmed full green test matrix:
+  - ✅ `ng test` (6 passing, 1 skipped)
+  - ✅ `cypress run` (6 passing)
+  - ✅ `tsc --noEmit` typecheck clean
+
+---
+
 ## [1.0.0] - 2025-06-17
 
 ### Chore
@@ -40,4 +53,4 @@
 
 - Add rendered Marp presentation PDF to deliverables  
 - Update `README.md` with full project file tree diagram  
-- Fix and validate relative links to test plan, test case
+- Fix and validate relative links to test plan, test cases, and future coverage notes  
