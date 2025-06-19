@@ -1,11 +1,16 @@
 /// <reference types="jasmine" />
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { CalculatorService } from './services/calculator-service/calculator.service';
 import { MessageService } from './services/message-service/message.service';
-import { fakeAsync, tick } from '@angular/core/testing';
+
+// ✅ Angular Material modules used in the template
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 // ✅ Mocks
 const mockCalculatorService = {
@@ -25,7 +30,13 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [FormsModule],
+      imports: [
+        FormsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatTooltipModule
+      ],
       providers: [
         { provide: CalculatorService, useValue: mockCalculatorService },
         { provide: MessageService, useValue: mockMessageService },
@@ -36,6 +47,7 @@ describe('AppComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
   /**
    * Unit Test: Component Creation
    * -----------------------------
@@ -45,6 +57,7 @@ describe('AppComponent', () => {
   it('should create the component', () => {
     expect(component).toBeTruthy();
   });
+
   /**
    * Unit Test: checkAnswer() - Correct Answer
    * -----------------------------------------
@@ -64,6 +77,7 @@ describe('AppComponent', () => {
     tick(500); // Simulate the timeout delay inside checkAnswer()
     expect(component.resetForm).toHaveBeenCalled();
   }));
+
   /**
    * Unit Test: checkAnswer() - Incorrect Answer
    * --------------------------------------------
@@ -84,6 +98,7 @@ describe('AppComponent', () => {
     );
     expect(component.setFocus).toHaveBeenCalled();
   });
+
   /**
    * Unit Test: resetForm()
    * -----------------------
@@ -102,6 +117,7 @@ describe('AppComponent', () => {
     expect(component.generateXandY).toHaveBeenCalled();
     expect(component.setFocus).toHaveBeenCalled();
   });
+
   /**
    * Unit Test: generateXandY()
    * ---------------------------

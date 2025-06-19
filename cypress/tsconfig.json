@@ -1,17 +1,20 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-  "target": "es2015",
-  "lib": ["es2015", "dom"],
-  "types": ["cypress"],
-  "esModuleInterop": true,
-  "resolveJsonModule": true,
-  "module": "esnext",
-  "noEmit": true
-},
-"include": [
-  "./e2e/*.cy.ts",
-  "./support/commands.d.ts"
+    "composite": true,
+    "declaration": true,            // ✅ Required with composite
+    "noEmit": false,
+    "target": "es2015",
+    "lib": ["es2015", "dom"],
+    "types": ["cypress"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "module": "esnext"
+  },
+ "include": [
+  "./e2e/**/*.ts",
+  "./support/**/*.ts",
+  "./support/**/*.json"            
 ],
   "exclude": [
     "../src/**/*.spec.ts"

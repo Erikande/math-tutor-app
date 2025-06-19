@@ -1,9 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "composite": true,
-    "declaration": true,
-    "outDir": "./out-tsc/spec",
+    "outDir": "./out-tsc/karma",
     "types": ["jasmine"],
     "typeRoots": ["./node_modules/@types"]
   },
