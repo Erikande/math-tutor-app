@@ -49,4 +49,7 @@ Thumbs.db
 # Cypress
 cypress/screenshots
 cypress/videos
-cypress/downloadstslint.json
+cypress/downloads
+
+# TSLint config (optional to track if actively used)
+tslint.json
