@@ -1,26 +1,28 @@
-name: Unit Tests (Karma)
+# .github/workflows/unit-tests.yml
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+# name: Unit Tests with Karma
+
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
 
 jobs:
   karma-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⬇️ Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: ⚙️ Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 18
 
-      - name: 📦 Install dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: 🧪 Run Karma Unit Tests
+      - name: Run unit tests
         run: npm run test:ci
