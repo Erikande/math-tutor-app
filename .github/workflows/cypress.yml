@@ -1,0 +1,38 @@
+name: E2E Tests (Cypress)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start Angular dev server
+        run: npm start &
+        env:
+          CI: true
+
+      - name: Download wait-for-it.sh
+        run: curl -o wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && chmod +x wait-for-it.sh
+
+      - name: Wait for Angular dev server
+        run: ./wait-for-it.sh localhost:4200 --timeout=60 --strict -- echo "Angular dev server is up"
+
+      - name: Run Cypress tests headlessly
+        run: npm run cy:run

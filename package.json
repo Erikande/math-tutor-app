@@ -1,15 +1,18 @@
 {
   "name": "math-tutor-app",
   "version": "1.0.1",
-  "scripts": {
+    "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
+    "cy:verify": "cypress verify",
+    "cy:info": "cypress info",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "commit": "cz"
   },
