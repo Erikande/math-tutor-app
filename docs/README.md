@@ -1,138 +1,103 @@
-# Math Tutor App – QA Take-Home Submission
+# Math Tutor App
+
+A simple Angular app for practicing basic math problems. Built as a QA automation showcase for the OneCause take-home exercise — now extended to demonstrate modern Test Engineer capabilities, including CI/CD, full test coverage, and code quality practices.
+
+---
 
 ## Overview
 
-This repository contains my QA-focused submission for the OneCause Senior Test Engineer take-home exercise. It includes:
+This app generates a random addition problem and lets users input their answer. The correctness is shown via a success or error toast.
 
-- ✅ A test plan outlining test scope, strategy, tools, and risk areas
-- ✅ Manual test cases, including happy path, negative path, and edge behaviors
-- ✅ Cypress end-to-end tests for core functionality
-- ✅ Unit tests targeting core logic within the main component:
-  - `AppComponent`: validates random number generation, input parsing, and result evaluation
-- ✅ Future coverage notes highlighting next-phase testing areas like accessibility and cross-platform support
+### Tech Highlights
 
----
-
-## How to Run the App
-
-1. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app:
-
-   ```bash
-   npx ng serve
-   ```
-
-3. Visit the app at:
-   ```
-   http://localhost:4200
-   ```
+- Angular 19.x with CLI
+- Cypress E2E tests
+- Jasmine unit tests (via Karma)
+- ✅ CI pipelines for Cypress and Karma tests via GitHub Actions
+- Prettier formatting + TSLint (legacy support)
+- Conventional Commits + CHANGELOG automation
 
 ---
 
-## Running Tests
-
-### Unit Tests (Jasmine + Karma)
+## Getting Started
 
 ```bash
-ng test
+git clone git@github.com:Erikande/math-tutor-app.git
+cd math-tutor-app
+npm install
+npm start
 ```
 
-**Unit test files are located in:**
+Then open [http://localhost:4200](http://localhost:4200) in your browser.
 
-```
-src/app/app.component.spec.ts
-```
+---
 
-### E2E Tests (Cypress)
+## Running Tests (CI & Local)
+
+### ✅ Unit Tests (Jasmine + Karma)
+
+Run locally:
 
 ```bash
-npx cypress open
+npm run test
+# or CI mode:
+npm run test:ci
 ```
 
-Tests are located in: `cypress/e2e/`
+Executed via GitHub Actions in `.github/workflows/unit-tests.yml` on each push and PR to `main`.
+
+### ✅ E2E Tests (Cypress)
+
+Run locally:
+
+```bash
+npm run cy:open
+# or headless:
+npm run cy:run
+```
+
+CI runs are defined in `.github/workflows/cypress.yml` using a headless browser and Angular dev server check.
 
 ---
 
-## Documentation
+## CI/CD Status
 
-All test documentation is located in the `docs/` folder:
-
-| File                       | Description                                                |
-| -------------------------- | ---------------------------------------------------------- |
-| `test-plan.md`             | QA test strategy, scope, and tooling overview              |
-| `test-cases.md`            | Manual test scenarios (happy, negative, edge cases)        |
-| `future-coverage-notes.md` | Areas noted for future testing (accessibility, i18n, etc.) |
+![Unit Tests](https://github.com/Erikande/math-tutor-app/actions/workflows/unit-tests.yml/badge.svg)
+![Cypress E2E](https://github.com/Erikande/math-tutor-app/actions/workflows/cypress.yml/badge.svg)
 
 ---
 
-## Notes and Approach
+## File Tree
 
-- Focused test coverage on core application behavior
-- Documented actual input handling, without assuming undefined behavior was incorrect
-- Identified but did not automate scenarios that rely on browser quirks or non-critical edge inputs
-- Avoided stepping into BA or product decisions; noted non-ideal UX separately
-
----
-
-## Validation Flow Observations
-
-A number of edge cases (TC04, TC09–TC15) revealed that the app lacks a complete inline validation flow. While it correctly blocks invalid inputs and disables the "Answer" button for malformed entries, this behavior is not surfaced to the user in an intuitive way. Specifically:
-
-- The app does **not implement inline field-level validation** (e.g., red borders or helper error messages).
-- All feedback occurs **after form submission** via toast notifications.
-- Inputs like `3abc` or `4.2.2` are partially parsed but may lead to confusion if not reflected visually.
-- The button state acts as a proxy for validation, but its behavior is not explained or reinforced visually.
-
-This results in a passive validation experience that depends on browser behavior rather than explicit UX cues. While functionally sound, it reduces user confidence and discoverability.
+```tree
+math-tutor-app/
+├── src/
+│   └── app/
+│       ├── app.component.ts
+│       └── app.component.spec.ts
+├── cypress/
+│   ├── e2e/
+│   │   └── core-functionality.cy.ts
+├── .github/
+│   └── workflows/
+│       ├── cypress.yml
+│       └── unit-tests.yml
+├── docs/
+│   ├── test-plan.md
+│   ├── test-cases.md
+│   └── future-coverage-notes.md
+├── package.json
+├── angular.json
+├── tsconfig.json
+└── README.md
+```
 
 ---
 
 ## Final Thoughts
 
-This submission reflects how I approach QA as a blend of strategy, automation, and user empathy. I'm happy to walk through the test structure and discuss edge cases or decisions during the live interview.
+This project demonstrates my real-world QA strategy — combining manual exploratory test planning with robust automation, type safety, and CI integration.
+
+This repo also includes fully automated CI pipelines, reflecting how I bring testing visibility and reliability into the delivery lifecycle.
 
 ---
-
-## Reference Documents
-
-- 📋 [Test Plan](docs/test-plan.md)
-- 📄 [Test Cases](docs/test-cases.md)
-- 🔮 [Future Coverage Notes](docs/future-coverage-notes.md)
-
-## 📁 Project Structure
-
-```
-.
-├── README.md
-├── package.json
-├── angular.json
-├── tsconfig.json
-├── tsconfig.spec.json
-├── src/
-│   └── app/
-│       ├── app.component.ts
-│       ├── app.component.spec.ts
-│       └── services/
-│           ├── calculator-service/
-│           │   └── calculator.service.ts
-│           └── message-service/
-│               └── message.service.ts
-├── cypress/
-│   ├── e2e/
-│   │   └── core-functionality.cy.ts
-│   ├── fixtures/
-│   └── support/
-│       └── commands.ts
-├── docs/
-│   ├── test-plan.md
-│   ├── test-cases.md
-│   ├── future-coverage-notes.md
-│   └── slides/
-│       ├── takehome-presentation.md
-│       └── takehome-presentation.pdf
-```
