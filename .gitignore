@@ -56,3 +56,6 @@ tslint.json
 
 # Audit output (not tracked in Git)
 audit/*.json
+
+# Audit output (not committed)
+audit/
