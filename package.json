@@ -1,6 +1,7 @@
 {
   "name": "math-tutor-app",
   "version": "1.0.1",
+  "type": "commonjs",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -17,7 +18,8 @@
     "commit": "cz",
     "audit:lighthouse": "lighthouse http://localhost:4200 --output=json --output-path=./audit/lh-latest.json --quiet --no-enable-error-reporting",
     "audit:axe": "axe http://localhost:4200 --save ./audit/axe-latest.json",
-    "audit:all": "npm run audit:lighthouse && npm run audit:axe"
+    "audit:report": "ts-node scripts/generate-audit-summary.ts",
+    "audit:all": "npm run audit:lighthouse && npm run audit:axe && npm run audit:report"
   },
   "config": {
     "commitizen": {
@@ -49,7 +51,7 @@
     "@axe-core/cli": "^4.10.2",
     "@testing-library/cypress": "^10.0.3",
     "@types/jasmine": "~3.6.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.20.55",
     "codelyzer": "^6.0.0",
     "commitizen": "^4.3.1",
     "conventional-changelog-cli": "^5.0.0",
