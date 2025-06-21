@@ -2,79 +2,99 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.3] - 2025-06-21
+## \[1.0.4] - 2025-06-21
 
-### QA Automation
+### Features
 
-- **e2e:** Verified Cypress test compatibility across Chrome, Firefox, and Edge
-- Confirmed clean baseline runs in all three browsers (`npx cypress run --browser`)
-- Clarified Cypress config does not require manual browser overrides unless customizing
+* **a11y**: Add audit baseline CLI using Lighthouse and axe-core
 
-## [1.0.2] - 2025-06-21
+  * Introduced `scripts/generate-audit-summary.ts` to generate a Markdown summary of accessibility & performance audits
+  * Added new NPM scripts:
+
+    * `audit:lighthouse` – Lighthouse scan of the app
+    * `audit:axe` – axe-core WCAG accessibility scan
+    * `audit:report` – Converts JSON results into `audit/summary.md`
+    * `audit:all` – Full audit workflow
+  * Updated `.gitignore` to exclude `audit/` folder
+  * Updated `tsconfig.json` to support `ts-node` scripts
+
+## \[1.0.3] - 2025-06-21
+
+### Docs
+
+* **readme**: add new audit workflow section
+
+## \[1.0.2] - 2025-06-21
 
 ### CI/CD
 
-- **github-actions**: Introduced separate GitHub Actions workflows for test automation
-  - ✅ `.github/workflows/cypress.yml` runs E2E tests using Cypress
-  - ✅ `.github/workflows/unit-tests.yml` runs Jasmine/Karma unit tests
-  - Added `wait-for-it.sh` utility to ensure Angular dev server readiness before Cypress execution
-  - Verified clean runs on all pushes and pull requests to `main` and feature branches
+* **github-actions**: Introduced separate GitHub Actions workflows for test automation
 
-## [1.0.1] - 2025-06-19
+  * ✅ `.github/workflows/cypress.yml` runs E2E tests using Cypress
 
-### Chore
+## \[1.0.1] - 2025-05-29
 
-- **deps**: Upgrade all `@angular/*` packages to `19.2.8` for compatibility with `@angular/flex-layout@15.0.0-beta.42`
-- **typescript**: Resolved TS6305 build mode errors by explicitly building `tsconfig.spec.json` and clearing old emit state
-- **tests**: Confirmed full green test matrix:
-  - ✅ `ng test` (6 passing, 1 skipped)
-  - ✅ `cypress run` (6 passing)
-  - ✅ `tsc --noEmit` typecheck clean
+### Testing
 
-### HTML Template
+* **unit**: Added Jasmine unit tests for AppComponent logic
+* **e2e**: Added Cypress tests for core functionality
 
-- **selectors**: Added `data-testid` hooks to `app.component.html` for robust Cypress automation
-- Ensured layout and functional parity after refactor
-- Confirmed no regression or selector drift in existing E2E coverage
+## \[1.0.0] - 2025-05-28
 
-## [1.0.0] - 2025-06-17
+### Initial release
 
-### Chore
-
-- **release**: begin pivot from OneCause submission toward standalone portfolio showcase  
-  - Branched from `release/v0.4.3-clean3` to `pivot/v1.0.0-foundation`  
-  - Bumped `package.json` version to `1.0.0`  
-  - Tagged repo for first public-facing evolution  
+* Project scaffolded using Angular CLI
+* Core functionality implemented (math quiz generation, answer validation)
+* Basic UI styling with Angular Material
 
 ---
 
-## [0.4.4] - 2025-05-26
+## \[0.4.4] - 2025-05-27
+
+### Docs
+
+* **slides**: add Marp slides PDF
+
+## \[0.4.3] - 2025-05-22
 
 ### Chore
 
-- **types**: isolate Cypress and Jasmine type configs for accurate TS validation  
-  - Added `cypress/tsconfig.json` with `types: ["cypress"]`, `"resolveJsonModule": true`, and ES2015+ libs  
-  - Updated `tsconfig.spec.json` to explicitly scope Jasmine types and exclude Cypress files  
-  - Declared custom Cypress commands (`cy.expectSuccessToast`, etc.) in `support/commands.d.ts`  
-  - Removed global type leakage by setting `"types": []` in the root `tsconfig.json`  
-  - Validated with `tsc --noEmit` across Cypress and Jasmine contexts  
+* **format**: normalize whitespace and indentation across 28 files using Prettier
 
----
+## \[0.4.2] - 2025-05-22
 
-## [0.4.3] - 2025-05-22
+### Docs
 
-### Chore
+* **demo**: update README with file tree and coverage link
 
-- **format**: normalize whitespace and indentation across 28 files using Prettier  
-  - Applied Prettier formatting to `.ts`, `.js`, `.html`, `.css`, and `.md` files  
-  - Removed unnecessary line breaks, fixed misaligned returns, and improved readability  
+## \[0.4.1] - 2025-05-22
 
----
+### Docs
 
-## [0.3.1] - 2025-05-22
+* **test cases**: update descriptions and formatting
 
-### Documentation
+## \[0.4.0] - 2025-05-22
 
-- Add rendered Marp presentation PDF to deliverables  
-- Update `README.md` with full project file tree diagram  
-- Fix and validate relative links to test plan, test cases, and future coverage notes  
+### Testing
+
+* **unit**: add AppComponent Jasmine tests
+* **mocks**: isolate service logic
+
+## \[0.3.1] - 2025-05-22
+
+### Docs
+
+* Add rendered Marp presentation PDF to deliverables
+* Update `README.md` with full project file tree diagram
+* Fix and validate relative links to test plan, test cases, and future coverage notes
+
+## \[0.3.0] - 2025-05-22
+
+### Testing
+
+* Add Jasmine unit tests for AppComponent logic
+
+  * checkAnswer() for success and failure
+  * resetForm() and generateXandY() paths covered
+* Use service mocking for DI test isolation
+* Ensure type-safe test environment separation
