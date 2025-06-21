@@ -1,39 +1,91 @@
-# MathTutorApp
+# Math Tutor App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11
+A simple web-based math tutor app built with Angular. This project is part of a QA Engineering exercise and demonstrates E2E automation, unit testing, typing strategy, and accessibility auditing.
 
-# Pre-requisites
+## 🚀 Getting Started
 
-### Mac
+Install dependencies:
 
-[node](https://nodejs.org/en/download) version 18.20.3 or higher
+```bash
+npm install
+```
 
-[command line tools](https://medium.com/@ivaishali/xcode-command-line-tools-26f95ba6fb71)
+Start the dev server:
 
-### Windows
+```bash
+npm start
+```
 
-[node](https://nodejs.org/en/download) version 18.20.3 or higher
+Visit [http://localhost:4200](http://localhost:4200) in your browser.
 
-## Build
+## 🧪 Testing
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run all tests:
 
-## Development server
+```bash
+npm test
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run Cypress E2E tests:
 
-## Code scaffolding
+```bash
+npm run cy:run
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ♿ Accessibility & Performance Audits
 
-## Running unit tests
+This project includes automated auditing using [Lighthouse](https://github.com/GoogleChrome/lighthouse) and [axe-core](https://github.com/dequelabs/axe-core).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Run All Audits
 
-## Running end-to-end tests
+```bash
+npm run audit:all
+```
 
-Run `npx cypress open` or `npx cypress run` to execute the end-to-end tests via [Cypress](http://www.cypress.io/).
+This command runs:
 
-## Further help
+* `lighthouse` against `http://localhost:4200` and saves `lh-latest.json`
+* `axe-core` CLI to run a11y tests via `axe-latest.json`
+* A Markdown report generator that outputs `audit/summary.md`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### View the Report
+
+```bash
+open audit/summary.md
+```
+
+This summary includes:
+
+* ✅ Lighthouse scores (Performance, Accessibility, Best Practices, SEO)
+* 🦯 Axe-core accessibility violations (with descriptions and counts)
+
+> Note: Only \~20–50% of accessibility issues are detectable via automation. [Manual testing is always required.](https://dequeuniversity.com/class/testing)
+
+---
+
+## 📦 Linting & Formatting
+
+Lint:
+
+```bash
+npm run lint
+```
+
+Format with Prettier:
+
+```bash
+npm run format
+```
+
+---
+
+## 📄 License
+
+This project is for demonstration purposes only and not intended for production use.
+
+---
+
+## 👤 Author
+
+Erik Anderson
+Senior Test Engineer Candidate
