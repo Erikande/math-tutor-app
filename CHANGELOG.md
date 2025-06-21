@@ -1,5 +1,17 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+## [1.0.2] - 2025-06-21
+
+### CI/CD
+
+- **github-actions**: Introduced separate GitHub Actions workflows for test automation
+  - ✅ `.github/workflows/cypress.yml` runs E2E tests using Cypress
+  - ✅ `.github/workflows/unit-tests.yml` runs Jasmine/Karma unit tests
+  - Added `wait-for-it.sh` utility to ensure Angular dev server readiness before Cypress execution
+  - Verified clean runs on all pushes and pull requests to `main` and feature branches
+
 ## [1.0.1] - 2025-06-19
 
 ### Chore
@@ -11,7 +23,11 @@
   - ✅ `cypress run` (6 passing)
   - ✅ `tsc --noEmit` typecheck clean
 
----
+### HTML Template
+
+- **selectors**: Added `data-testid` hooks to `app.component.html` for robust Cypress automation
+- Ensured layout and functional parity after refactor
+- Confirmed no regression or selector drift in existing E2E coverage
 
 ## [1.0.0] - 2025-06-17
 
