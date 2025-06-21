@@ -53,3 +53,6 @@ cypress/downloads
 
 # TSLint config (optional to track if actively used)
 tslint.json
+
+# Audit output (not tracked in Git)
+audit/*.json
