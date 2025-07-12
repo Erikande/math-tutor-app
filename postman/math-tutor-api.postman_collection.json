@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "e43cb5ef-f4ce-42f2-83fe-2654a03d59c2",
+		"name": "Math Tutor API",
+		"description": "Postman collection for testing Math Tutor API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21301345"
+	},
+	"item": [
+		{
+			"name": "GET /problem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has x and y as numbers\", function () {",
+							"  const json = pm.response.json();",
+							"  pm.expect(json).to.have.property(\"x\").that.is.a(\"number\");",
+							"  pm.expect(json).to.have.property(\"y\").that.is.a(\"number\");",
+							"});",
+							"",
+							"// 💡 Add schema first",
+							"const schema = {",
+							"  type: \"object\",",
+							"  required: [\"x\", \"y\"],",
+							"  properties: {",
+							"    x: { type: \"number\" },",
+							"    y: { type: \"number\" }",
+							"  }",
+							"};",
+							"",
+							"const data = pm.response.json();",
+							"",
+							"pm.test(\"Schema is valid\", function () {",
+							"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+							"});",
+							"",
+							"const jsonData = pm.response.json();",
+							"",
+							"// Save values for use in the next request",
+							"pm.environment.set(\"x\", jsonData.x);",
+							"pm.environment.set(\"y\", jsonData.y);",
+							"",
+							"// Optional: Log to Postman console for debugging",
+							"console.log(\"Stored x:\", jsonData.x);",
+							"console.log(\"Stored y:\", jsonData.y);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/problem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"problem"
+					]
+				},
+				"description": "Returns a random addition problem with two operands between 0–10"
+			},
+			"response": [
+				{
+					"name": "Sample Math Problem",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/problem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"problem"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "13"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d-eivgtVgDidGD9ece8uBGFfzn3Gs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Jun 2025 23:33:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"x\": 4,\n    \"y\": 3\n}"
+				}
+			]
+		},
+		{
+			"name": "POST /answer",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Read x and y from the environment",
+							"const x = parseInt(pm.environment.get(\"x\"));",
+							"const y = parseInt(pm.environment.get(\"y\"));",
+							"const answer = x + y;",
+							"",
+							"// Set request body dynamically",
+							"pm.request.body.update(JSON.stringify({",
+							"  x: x,",
+							"  y: y,",
+							"  answer: answer",
+							"}));",
+							"",
+							"console.log(\"Sending answer:\", answer);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// ✅ Check status code",
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// ✅ Check that `correct` is present and a boolean",
+							"pm.test(\"Response has 'correct' as boolean\", function () {",
+							"  const json = pm.response.json();",
+							"  pm.expect(json).to.have.property(\"correct\").that.is.a(\"boolean\");",
+							"});",
+							"",
+							"// ✅ Schema validation using tv4",
+							"const schema = {",
+							"  type: \"object\",",
+							"  required: [\"correct\"],",
+							"  properties: {",
+							"    correct: { type: \"boolean\" }",
+							"  }",
+							"};",
+							"",
+							"const data = pm.response.json();",
+							"",
+							"pm.test(\"Schema is valid\", function () {",
+							"  pm.expect(tv4.validate(data, schema)).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"x\": 5,\n  \"y\": 7,\n  \"answer\": \"12\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/answer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"answer"
+					]
+				},
+				"description": "Submits a proposed answer for a given `x` and `y`. Returns `{ correct: true }` if the answer is accurate, otherwise `{ correct: false }`."
+			},
+			"response": [
+				{
+					"name": "Correct Answer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"x\": 5,\n  \"y\": 4,\n  \"answer\": 9\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/answer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"answer"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "16"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10-ggY4drkl7Q1Lvd/S3I+Oxbj4p/4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Jun 2025 23:52:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"correct\": true\n}"
+				},
+				{
+					"name": "Incorrect Answer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"x\": 5,\n  \"y\": 4,\n  \"answer\": 8\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/answer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"answer"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "17"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11-8a/zZopxIHdaLn1n363JIIhy2Lw\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Jun 2025 23:52:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"correct\": false\n}"
+				}
+			]
+		}
+	]
+}

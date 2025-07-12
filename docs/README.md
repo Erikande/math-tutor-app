@@ -1,103 +1,119 @@
-# Math Tutor App
 
-A simple Angular app for practicing basic math problems. Built as a QA automation showcase for the OneCause take-home exercise — now extended to demonstrate modern Test Engineer capabilities, including CI/CD, full test coverage, and code quality practices.
+# Math Tutor App 🧮
 
----
+This is a simple Angular-based math quiz app with integrated testing and CI/CD workflows.
 
-## Overview
+## 🚀 Getting Started
 
-This app generates a random addition problem and lets users input their answer. The correctness is shown via a success or error toast.
-
-### Tech Highlights
-
-- Angular 19.x with CLI
-- Cypress E2E tests
-- Jasmine unit tests (via Karma)
-- ✅ CI pipelines for Cypress and Karma tests via GitHub Actions
-- Prettier formatting + TSLint (legacy support)
-- Conventional Commits + CHANGELOG automation
-
----
-
-## Getting Started
+Install dependencies:
 
 ```bash
-git clone git@github.com:Erikande/math-tutor-app.git
-cd math-tutor-app
 npm install
+```
+
+Start the app locally:
+
+```bash
 npm start
 ```
 
-Then open [http://localhost:4200](http://localhost:4200) in your browser.
-
----
-
-## Running Tests (CI & Local)
-
-### ✅ Unit Tests (Jasmine + Karma)
-
-Run locally:
+Run unit tests:
 
 ```bash
 npm run test
-# or CI mode:
-npm run test:ci
 ```
 
-Executed via GitHub Actions in `.github/workflows/unit-tests.yml` on each push and PR to `main`.
-
-### ✅ E2E Tests (Cypress)
-
-Run locally:
+Run E2E tests:
 
 ```bash
-npm run cy:open
-# or headless:
 npm run cy:run
 ```
 
-CI runs are defined in `.github/workflows/cypress.yml` using a headless browser and Angular dev server check.
+## ✅ Test Coverage
+
+| Type     | Framework   | Status |
+|----------|-------------|--------|
+| Unit     | Jasmine     | ✅     |
+| E2E      | Cypress     | ✅     |
+| Audit    | Lighthouse + axe-core | ✅     |
+| API Test | Postman     | ✅     |
 
 ---
 
-## CI/CD Status
+## 🦾 Automation & QA Enhancements
 
-![Unit Tests](https://github.com/Erikande/math-tutor-app/actions/workflows/unit-tests.yml/badge.svg)
-![Cypress E2E](https://github.com/Erikande/math-tutor-app/actions/workflows/cypress.yml/badge.svg)
+### 🔍 Accessibility & Performance Audits
 
----
+Audits use Lighthouse and axe-core to evaluate the app's:
 
-## File Tree
+- Performance
+- Accessibility (WCAG)
+- SEO
+- Best Practices
 
-```tree
-math-tutor-app/
-├── src/
-│   └── app/
-│       ├── app.component.ts
-│       └── app.component.spec.ts
-├── cypress/
-│   ├── e2e/
-│   │   └── core-functionality.cy.ts
-├── .github/
-│   └── workflows/
-│       ├── cypress.yml
-│       └── unit-tests.yml
-├── docs/
-│   ├── test-plan.md
-│   ├── test-cases.md
-│   └── future-coverage-notes.md
-├── package.json
-├── angular.json
-├── tsconfig.json
-└── README.md
+Run the full audit:
+
+```bash
+npm run audit:all
+```
+
+View the latest summary:
+
+```bash
+audit/summary.md
 ```
 
 ---
 
-## Final Thoughts
+### 🧪 API Test Coverage (Postman)
 
-This project demonstrates my real-world QA strategy — combining manual exploratory test planning with robust automation, type safety, and CI integration.
+[![Postman Tests](https://img.shields.io/badge/Postman-Collection%20Passing-brightgreen?logo=postman&logoColor=white)](../postman/math-tutor-api.postman_collection.json)
 
-This repo also includes fully automated CI pipelines, reflecting how I bring testing visibility and reliability into the delivery lifecycle.
+A lightweight Express API was added to simulate backend behavior. It is tested with Postman and includes:
+
+- `GET /problem` – returns a random math problem
+- `POST /answer` – checks correctness of answer
+
+Tests include:
+
+- ✅ Status code validation
+- ✅ Property checks (e.g. `x`, `y`, `correct`)
+- ✅ Schema validation via `tv4`
+- ✅ Dynamic environment chaining (e.g. re-using `x`, `y`)
+
+📸 **Example Run:**
+
+![Postman Collection Run](postman-collection-run-success.png)
+
+🧾 Collection file: [math-tutor-api.postman_collection.json](../postman/math-tutor-api.postman_collection.json)
 
 ---
+
+## 📂 Folder Structure
+
+```
+.
+├── src/                   # Angular app
+├── cypress/               # Cypress E2E tests
+├── server/                # Express API server
+├── scripts/               # Custom scripts (e.g. audit summary)
+├── audit/                 # Lighthouse + axe-core JSON + summary
+├── docs/                  # Static artifacts (Postman collection, screenshots)
+```
+
+---
+
+## 🛠️ Scripts
+
+| Script            | Description |
+|-------------------|-------------|
+| `start`           | Start Angular dev server |
+| `test`            | Run Jasmine unit tests |
+| `cy:run`          | Run Cypress E2E tests |
+| `audit:all`       | Run Lighthouse + axe-core and generate Markdown summary |
+| `api:start`       | Start Express API mock server (for Postman) |
+
+---
+
+##### © OneCause Take-Home Challenge
+Crafted with care and quality by Erik Anderson 💻🧪
