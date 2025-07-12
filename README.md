@@ -1,91 +1,47 @@
 # Math Tutor App
 
-A simple web-based math tutor app built with Angular. This project is part of a QA Engineering exercise and demonstrates E2E automation, unit testing, typing strategy, and accessibility auditing.
+This is the root README for the Math Tutor App project.
 
-## 🚀 Getting Started
+## Overview
 
-Install dependencies:
+The Math Tutor App is a lightweight Angular application designed to help children practice basic arithmetic. This project was developed as part of a take-home assignment and showcases a complete test automation strategy suitable for a **Senior QA Engineer** role.
 
-```bash
-npm install
+## Features
+
+- Random math challenge generator
+- Addition functionality
+- Accessible UI and messaging with ARIA support
+- Responsive layout using Angular Flex Layout
+- Angular Material UI components
+
+## Accessibility Enhancements ✅
+
+This app now includes accessible status messaging for users with assistive technologies. Alerts (previously using toasts) are now implemented via an ARIA live region inside the app template, located in the `mat-card-header`.
+
+### Status Message (Live Region)
+```html
+<div
+  *ngIf="statusMessage"
+  [attr.aria-live]="statusType === 'error' ? 'assertive' : 'polite'"
+  role="status"
+  class="status-message"
+  [attr.data-testid]="'status'"
+  [ngClass]="statusType"
+>
+  {{ statusMessage }}
+</div>
 ```
 
-Start the dev server:
+## Scripts
 
-```bash
-npm start
-```
+- `npm run test` – Run Jasmine unit tests
+- `npm run cy:run` – Run Cypress E2E tests (Electron headless)
+- `npm run audit:all` – Run Lighthouse and Axe accessibility audits
 
-Visit [http://localhost:4200](http://localhost:4200) in your browser.
+## Cypress Notes
 
-## 🧪 Testing
+Cypress tests reference selectors in `cypress/support/selectors/mathAppComponent.json`. All core functionality tests are written in `math-app.cy.ts`.
 
-Run all tests:
+## License
 
-```bash
-npm test
-```
-
-Run Cypress E2E tests:
-
-```bash
-npm run cy:run
-```
-
-## ♿ Accessibility & Performance Audits
-
-This project includes automated auditing using [Lighthouse](https://github.com/GoogleChrome/lighthouse) and [axe-core](https://github.com/dequelabs/axe-core).
-
-### Run All Audits
-
-```bash
-npm run audit:all
-```
-
-This command runs:
-
-* `lighthouse` against `http://localhost:4200` and saves `lh-latest.json`
-* `axe-core` CLI to run a11y tests via `axe-latest.json`
-* A Markdown report generator that outputs `audit/summary.md`
-
-### View the Report
-
-```bash
-open audit/summary.md
-```
-
-This summary includes:
-
-* ✅ Lighthouse scores (Performance, Accessibility, Best Practices, SEO)
-* 🦯 Axe-core accessibility violations (with descriptions and counts)
-
-> Note: Only \~20–50% of accessibility issues are detectable via automation. [Manual testing is always required.](https://dequeuniversity.com/class/testing)
-
----
-
-## 📦 Linting & Formatting
-
-Lint:
-
-```bash
-npm run lint
-```
-
-Format with Prettier:
-
-```bash
-npm run format
-```
-
----
-
-## 📄 License
-
-This project is for demonstration purposes only and not intended for production use.
-
----
-
-## 👤 Author
-
-Erik Anderson
-Senior Test Engineer Candidate
+MIT
