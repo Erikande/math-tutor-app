@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+[1.0.6] - 2025-07-12
+Accessibility
+a11y: Replaced non-accessible toast notifications with ARIA live region
+
+Introduced statusMessage and statusType bindings in AppComponent
+
+Refactored MessageService to support A11y-friendly messaging
+
+Updated UI to expose a <div role="status" aria-live="..."> element
+
+Cypress custom commands updated to assert against new accessible messaging
+
+Jasmine tests updated to validate new logic and remove toast-specific expectations
+
+Docs
+test cases: Updated test-cases.md to reflect A11y messaging flow
+
+test plan: Confirmed new behavior across manual and automated strategies
+
+readme(s): Updated root and docs/README.md to reflect improved error messaging pattern
+
 ## [1.0.5] - 2025-07-12
 
 ### Features
