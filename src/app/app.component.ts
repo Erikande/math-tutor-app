@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
-import { ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import { CalculatorService } from './services/calculator-service/calculator.service';
-import { MessageService } from './services/message-service/message.service';
 
 @Component({
   selector: 'app-root',
@@ -18,25 +16,29 @@ export class AppComponent {
   yValue: number;
   answer: number;
 
-  constructor(
-    private calculatorService: CalculatorService,
-    private messageService: MessageService
-  ) {
+  statusMessage: string = '';
+  statusType: 'success' | 'error' | '' = '';
+
+  constructor(private calculatorService: CalculatorService) {
     this.generateXandY();
     this.answer = null;
   }
 
   checkAnswer(): void {
     if (this.calculatorService.checkAnswer(this.xValue, this.yValue, this.answer)) {
-      this.messageService.showSuccess("That's right! Try another one.", '');
+      this.statusMessage = "That's right! Try another one.";
+      this.statusType = 'success';
       setTimeout(() => this.resetForm(), 500);
     } else {
-      this.messageService.showError('Sorry, that is not correct. Please try again.', '');
+      this.statusMessage = 'Sorry, that is not correct. Please try again.';
+      this.statusType = 'error';
       this.setFocus();
     }
   }
 
   resetForm(): void {
+    this.statusMessage = '';
+    this.statusType = '';
     this.generateXandY();
     this.answer = null;
     this.setFocus();
@@ -44,7 +46,7 @@ export class AppComponent {
 
   setFocus(): void {
     const inputBox: HTMLInputElement = this.input.nativeElement as HTMLInputElement;
-    this.input.nativeElement.focus();
+    inputBox.focus();
   }
 
   generateXandY(): void {

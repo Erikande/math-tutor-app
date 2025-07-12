@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessageService {
-  constructor(private toastr: ToastrService) {}
+  private statusMessageSubject = new BehaviorSubject<string | null>(null);
+  private statusTypeSubject = new BehaviorSubject<'success' | 'error' | null>(null);
 
-  showSuccess(message: string, title: string): void {
-    this.toastr.success(message, title);
+  public statusMessage$ = this.statusMessageSubject.asObservable();
+  public statusType$ = this.statusTypeSubject.asObservable();
+
+  showSuccess(message: string): void {
+    this.statusMessageSubject.next(message);
+    this.statusTypeSubject.next('success');
   }
 
-  showError(message: string, title: string): void {
-    this.toastr.error(message, title);
+  showError(message: string): void {
+    this.statusMessageSubject.next(message);
+    this.statusTypeSubject.next('error');
+  }
+
+  clear(): void {
+    this.statusMessageSubject.next(null);
+    this.statusTypeSubject.next(null);
   }
 }

@@ -24,11 +24,20 @@ Cypress.Commands.add('waitForMathChallenge', () => {
 // Asserts that a success toast is visible and contains the expected text.
 // Typically triggered on correct answers or positive feedback.
 Cypress.Commands.add('expectSuccessToast', (text) => {
-  cy.get(selectors.toastSuccess).should('contain', text);
+  cy.get('[data-testid="status"]')
+    .should('exist')
+    .and('have.attr', 'role', 'status')
+    .and('have.class', 'success')
+    .and('contain.text', text);
 });
 
 // Asserts that an error toast is visible and contains the expected text.
 // Used when the user provides incorrect input or triggers validation errors.
 Cypress.Commands.add('expectErrorToast', (text) => {
-  cy.get(selectors.toastError).should('contain', text);
+  cy.get('[data-testid="status"]')
+    .should('exist')
+    .and('have.attr', 'role', 'status')
+    .and('have.class', 'error')
+    .and('contain.text', text);
 });
+
