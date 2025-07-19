@@ -23,3 +23,11 @@ Ensure the Math Tutor App is functionally complete, accessible, and regression-s
 
 - ARIA live region implemented with `role="status"` and `aria-live="polite"` or `"assertive"` based on message type
 - Screen-reader friendly error and success feedback
+
+## Responsive Coverage 📱
+
+Responsive Cypress tests verify layout behavior at key device breakpoints. Screenshots are saved in [`docs/screenshots/`](./screenshots).
+
+Example Snapshot:
+
+![Mobile Small](./screenshots/rwd-mobile-small.png)
