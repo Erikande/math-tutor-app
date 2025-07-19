@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+[1.0.8] - 2025-07-19
+Features
+rwd/screenshots: Captured and organized responsive screenshots
+
+Devices: rwd-desktop, rwd-tablet, rwd-mobile-small, rwd-mobile-modern, rwd-mobile-wide
+
+Stored under docs/screenshots/
+
+Embedded screenshots in test-plan.md under "Responsive Coverage"
+
+Docs
+showcase: Created docs/showcase.md for artifact demonstration
+
+Includes annotated visuals of layout and ARIA regions
+
+Linked from project README.md under "📚 Documentation"
+
+test-plan: Added screenshot section under "Responsive Design Viewport Test"
+
+readme: Linked to showcase.md and clarified documentation entry points
+
+
 [1.0.7] - 2025-07-19
 Features
 ui/responsive: Refactored layout to fully support Responsive Web Design (RWD)
