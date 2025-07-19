@@ -23,12 +23,15 @@
 
         <div
           *ngIf="statusMessage"
-          [attr.aria-live]="statusType === 'error' ? 'assertive' : 'polite'"
-          role="status"
           class="status-message"
-          [ngClass]="statusType"
+          [ngClass]="[statusType, fadeOut ? 'fade-out' : '']"
+          [attr.aria-live]="statusType === 'error' ? 'assertive' : 'polite'"
+          role="alert"
         >
-          {{ statusMessage }}
+          <span class="material-icons icon" aria-hidden="true">
+            {{ statusType === 'success' ? 'check_circle' : 'error' }}
+          </span>
+          <span class="message-text">{{ statusMessage }}</span>
         </div>
       </mat-card-header>
 
