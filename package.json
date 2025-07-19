@@ -20,7 +20,9 @@
     "audit:axe": "axe http://localhost:4200 --save ./audit/axe-latest.json",
     "audit:report": "ts-node scripts/generate-audit-summary.ts",
     "audit:all": "npm run audit:lighthouse && npm run audit:axe && npm run audit:report",
-    "api:start": "ts-node server/server.ts"
+    "api:start": "ts-node server/server.ts",
+    "cy:responsive": "cypress run --spec 'cypress/e2e/responsive-*.cy.ts'",
+    "cy:responsive:open": "cypress open --e2e"
   },
   "config": {
     "commitizen": {

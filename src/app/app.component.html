@@ -1,4 +1,6 @@
-<!-- Banner -->
+<!-- ✅ Restored Original Layout for Math Tutor App -->
+
+<!-- 📸 Banner Section -->
 <div class="banner-container">
   <h1 class="visually-hidden">Math Tutor App</h1>
   <img
@@ -18,15 +20,17 @@
   >
     <mat-card fxLayout="column" fxFlexFill>
       <mat-card-header>
-        <mat-card-title>Math Challenge</mat-card-title>
-        <mat-card-subtitle>Addition</mat-card-subtitle>
+        <mat-card-title data-testid="card-title">Math Challenge</mat-card-title>
+        <mat-card-subtitle data-testid="card-subtitle">Addition</mat-card-subtitle>
 
+        <!-- 🔔 Status Message -->
         <div
           *ngIf="statusMessage"
           class="status-message"
           [ngClass]="[statusType, fadeOut ? 'fade-out' : '']"
           [attr.aria-live]="statusType === 'error' ? 'assertive' : 'polite'"
-          role="alert"
+          role="status"
+          data-testid="status"
         >
           <span class="material-icons icon" aria-hidden="true">
             {{ statusType === 'success' ? 'check_circle' : 'error' }}
@@ -40,7 +44,7 @@
           <!-- X -->
           <div fxLayout="row" class="equation-row">
             <div class="equation-value">
-              <span [innerHtml]="xValue"></span>
+              <span [innerHtml]="xValue" data-testid="x-value"></span>
             </div>
           </div>
 
@@ -48,7 +52,7 @@
           <div fxLayout="row" class="equation-row y-row">
             <div class="operator">+</div>
             <div class="equation-value">
-              <span [innerHtml]="yValue"></span>
+              <span [innerHtml]="yValue" data-testid="y-value"></span>
             </div>
           </div>
 
@@ -61,6 +65,7 @@
               type="number"
               [(ngModel)]="answer"
               style="text-align: right"
+              data-testid="user-input"
             />
           </mat-form-field>
         </div>
@@ -73,6 +78,7 @@
           (click)="checkAnswer()"
           [disabled]="answer == null"
           class="responsive-button"
+          data-testid="answer-button"
         >
           Answer
         </button>
