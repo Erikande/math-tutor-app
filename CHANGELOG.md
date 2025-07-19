@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+[1.0.7] - 2025-07-19
+Features
+ui/responsive: Refactored layout to fully support Responsive Web Design (RWD)
+
+Introduced responsive banner-container with accessible <img> and <h1 class="visually-hidden">
+
+Updated .math-card-container for mobile-first max-widths and vertical centering
+
+Adjusted mat-card padding and spacing for better readability on all breakpoints
+
+a11y: Enhanced accessible status messaging UX
+
+Styled .status-message with visual hierarchy, color-coding for success/error, and improved font sizing
+
+Added motion-safe fade-in animation for message visibility transitions
+
+Confirmed ARIA role and aria-live region compliance
+
+Refactor
+css: Unified global typography with Inter font and smoother base layout
+
+html: Restructured markup for banner + math card hierarchy to improve screen reader flow
+
 [1.0.6] - 2025-07-12
 Accessibility
 a11y: Replaced non-accessible toast notifications with ARIA live region
