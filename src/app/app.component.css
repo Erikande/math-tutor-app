@@ -1,24 +1,127 @@
-.mat-form-field {
-  padding-left: 0px !important;
-  margin-right: 8px !important;
-}
-
-.mat-card-content {
-  margin-bottom: 0px !important;
-}
-
-.mat-card-actions {
-  padding-top: 0px !important;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+/* Global Font Reset */
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f8f8f8;
   margin: 0;
 }
 
-/* Firefox */
-input[type='number'] {
-  -moz-appearance: textfield;
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+
+/* Banner */
+.banner-container {
+  width: 100%;
+  aspect-ratio: 4 / 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive Outer Container */
+.math-card-container {
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* NEW: centers vertically on taller screens */
+  min-height: calc(100vh - 300px); /* Banner height + breathing space */
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .math-card-container {
+    max-width: 540px;
+    padding: 3rem 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .math-card-container {
+    max-width: 720px;
+  }
+}
+
+/* Card Styling */
+.card-wrapper {
+  width: 100%;
+  max-width: 460px;
+}
+
+mat-card {
+  padding: 2.25rem 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+}
+
+/* Typography */
+mat-card-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+mat-card-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.25rem;
+}
+mat-label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.status-message {
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+
+/* Equation Layout */
+.operator {
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding-right: 0.5rem;
+}
+.equation-row {
+  padding: 8px;
+  width: 100px;
+}
+.equation-value {
+  width: 100%;
+  text-align: right;
+}
+.y-row {
+  border-bottom: 2px solid black;
+}
+
+/* Inputs and Buttons */
+.full-width-input {
+  width: 100%;
+  margin-top: 1rem;
+}
+input[matInput] {
+  font-size: 1.1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+}
+button.responsive-button {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+@media (min-width: 768px) {
+  button.responsive-button {
+    width: auto;
+  }
 }

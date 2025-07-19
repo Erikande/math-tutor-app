@@ -1,101 +1,78 @@
-<!-- Math Challenge Card -->
-<div
-  style="height: 100%; width: 100%; padding-top: 16px; background-color: antiquewhite"
-  fxLayout="row"
-  fxLayoutAlign="center"
-  data-testid="container"
->
+<!-- Banner -->
+<div class="banner-container">
+  <h1 class="visually-hidden">Math Tutor App</h1>
+  <img
+    src="https://placehold.co/1200x300?text=Math+Tutor+App&font=inter"
+    alt="Math Tutor Banner"
+    class="banner-image"
+  />
+</div>
+
+<!-- Main Layout Container -->
+<div class="math-card-container">
   <div
-    style="height: 400px; width: 400px"
+    class="card-wrapper"
     fxLayout="column"
-    fxLayoutAlign="center"
+    fxLayoutAlign="center stretch"
     data-testid="card-wrapper"
   >
-    <mat-card fxLayout="column" fxFlexFill data-testid="math-card">
-      <mat-card-header fxFlex="none" data-testid="card-header">
-        <mat-card-title data-testid="card-title">Math Challenge</mat-card-title>
-        <mat-card-subtitle data-testid="card-subtitle">Addition</mat-card-subtitle>
+    <mat-card fxLayout="column" fxFlexFill>
+      <mat-card-header>
+        <mat-card-title>Math Challenge</mat-card-title>
+        <mat-card-subtitle>Addition</mat-card-subtitle>
 
         <div
           *ngIf="statusMessage"
           [attr.aria-live]="statusType === 'error' ? 'assertive' : 'polite'"
           role="status"
           class="status-message"
-          [attr.data-testid]="'status'"
           [ngClass]="statusType"
-          style="margin-top: 12px; margin-bottom: 12px"
         >
           {{ statusMessage }}
         </div>
       </mat-card-header>
 
-      <mat-card-content
-        fxFlex
-        style="padding-left: 16px; padding-right: 16px"
-        data-testid="card-content"
-      >
-        <div fxLayout="column" fxLayoutAlign="end" data-testid="equation-wrapper">
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutAlign="end">
           <!-- X -->
-          <div
-            fxLayout="row"
-            style="padding: 8px; width: 100px"
-            data-testid="x-row"
-          >
-            <div style="width: 100%; text-align: right">
-              <span [innerHtml]="xValue" data-testid="x-value"></span>
+          <div fxLayout="row" class="equation-row">
+            <div class="equation-value">
+              <span [innerHtml]="xValue"></span>
             </div>
           </div>
 
           <!-- Y -->
-          <div
-            fxLayout="row"
-            style="padding: 8px; width: 100px; border-bottom: 2px solid black"
-            data-testid="y-row"
-          >
-            <div data-testid="operator">+</div>
-            <div style="width: 100%; text-align: right">
-              <span [innerHtml]="yValue" data-testid="y-value"></span>
+          <div fxLayout="row" class="equation-row y-row">
+            <div class="operator">+</div>
+            <div class="equation-value">
+              <span [innerHtml]="yValue"></span>
             </div>
           </div>
 
           <!-- Answer -->
-          <mat-form-field
-            style="padding: 8px; width: 92px"
-            data-testid="form-field"
-          >
-            <mat-label data-testid="input-label">Answer</mat-label>
+          <mat-form-field class="full-width-input" appearance="fill">
+            <mat-label>Answer</mat-label>
             <input
               #appInputSelect
               matInput
               type="number"
               [(ngModel)]="answer"
               style="text-align: right"
-              data-testid="user-input"
             />
           </mat-form-field>
         </div>
       </mat-card-content>
 
-      <mat-card-actions
-        fxFlex="none"
-        style="padding-left: 16px; padding-right: 16px"
-        data-testid="card-actions"
-      >
-        <div
-          matTooltip="Please provide an answer."
-          [matTooltipDisabled]="answer !== null"
-          data-testid="tooltip-wrapper"
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="checkAnswer()"
+          [disabled]="answer == null"
+          class="responsive-button"
         >
-          <button
-            mat-raised-button
-            color="primary"
-            (click)="checkAnswer()"
-            [disabled]="answer == null"
-            data-testid="answer-button"
-          >
-            Answer
-          </button>
-        </div>
+          Answer
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>
