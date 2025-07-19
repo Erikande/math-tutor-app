@@ -14,6 +14,13 @@ The Math Tutor App is a lightweight Angular application designed to help childre
 * Responsive layout using Angular Flex Layout
 * Angular Material UI components
 
+## Documentation
+
+- [Test Plan](./docs/test-plan.md)
+- [Test Cases](./docs/test-cases.md)
+- [Future Coverage Notes](./docs/future-coverage-notes.md)
+- [Visual Showcase](./docs/showcase.md) – Annotated UI screenshots and layout proof
+
 ## Accessibility Enhancements ✅
 
 This app now includes accessible status messaging for users with assistive technologies. Alerts (previously using toasts) are now implemented via an ARIA live region inside the app template, located in the `mat-card-header`.
@@ -71,3 +78,15 @@ Cypress E2E tests validate layout integrity and interaction across multiple devi
 ## License
 
 MIT
+
+### Responsive Layout Snapshots
+
+Below are visual artifacts captured during Cypress responsive layout tests:
+
+| Device              | Screenshot                                      |
+|---------------------|-------------------------------------------------|
+| 📱 Mobile (Small)   | ![](./docs/screenshots/rwd-mobile-small.png)         |
+| 📱 Mobile (Modern)  | ![](./docs/screenshots/rwd-mobile-modern.png)        |
+| 📱 Mobile (Wide)    | ![](./docs/screenshots/rwd-mobile-wide.png)          |
+| 📱 Tablet           | ![](./docs/screenshots/rwd-tablet.png)               |
+| 💻 Desktop          | ![](./docs/screenshots/rwd-desktop.png)              |
