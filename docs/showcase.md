@@ -89,3 +89,11 @@ We used Lighthouse to establish a performance and SEO baseline.
   - [audit/axe-latest.json](../audit/axe-latest.json)
 
 See [`audit/summary.md`](../audit/summary.md) for a summary of key metrics.
+
+## API Validation Snapshot
+
+The following image shows the successful execution of the math-tutor Postman collection. This validates the availability and behavior of the API used in the app.
+
+![Postman Success](./postman-collection-run-success.png)
+
+> Visual confirmation of successful Postman collection execution

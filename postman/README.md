@@ -1,37 +1,54 @@
-# 📮 Postman Collection – Math Tutor API
+# Postman API Test Execution
 
-This file documents the Postman API test collection used to validate the Math Tutor API layer.
+This directory contains the Postman test collection and execution artifacts for the Math Tutor App.
 
-## 🧩 Purpose
+## 📦 Files Included
 
-Even though the frontend is a static single-page Angular app, this mock API layer and Postman collection were introduced to showcase QA skills across a full stack:
+* `math-tutor.postman_collection.json` — Main Postman test collection
+* `math-tutor.postman_environment.json` — Environment file for localhost API testing
+* `postman-run-success.png` — Screenshot of a successful run for visual confirmation
 
-- ✅ Building a basic Express API server
-- ✅ Writing automated schema and contract tests in Postman
-- ✅ Dynamically chaining test requests using environment variables
-- ✅ Demonstrating test result validation and collection runs
+## ✅ How to Run Locally
 
-## 📂 Collection Contents
+> ⚠️ **Important**: Ensure the API server is running before executing tests. Run it with:
 
-| Request          | Method | Purpose                                  |
-|------------------|--------|------------------------------------------|
-| `GET /problem`   | GET    | Returns two random integers `x` and `y`  |
-| `POST /answer`   | POST   | Submits the answer payload `{ x, y, answer }` and returns `{ correct: true/false }` |
+```bash
+npm run api:start
+```
 
-Each request includes:
+You can execute the Postman test suite via the Postman GUI or Newman CLI.
 
-- 🧪 **Post-response tests** using `pm.test(...)`
-- 📋 **Schema validation** using `tv4`
-- 🔁 **Environment chaining**: Values from `GET /problem` are reused in `POST /answer`
+### Using Postman App
 
-## 🖼️ Example: Collection Run Success
+1. Open the Postman desktop app
+2. Import both the collection and environment files
+3. Select the environment `Math Tutor App - Local`
+4. Click **Run Collection**
 
-![Postman Collection Run – Success](../docs/postman-collection-run-success.png)
+### Using Newman (CLI)
 
-> ✅ All assertions pass and responses match schema.
+```bash
+npm install -g newman
+newman run math-tutor.postman_collection.json -e math-tutor.postman_environment.json
+```
 
-## 📦 Export
+## 🔍 Output
 
-📦 Exported in [Postman Collection v2.1 format](https://schema.postman.com/json/collection/v2.1.0/collection.json)
-🧾 Collection file: [math-tutor-api.postman_collection.json](./math-tutor-api.postman_collection.json)
+* The Newman CLI will output a summary of all tests.
+* A successful run should show 0 failures.
+* Screenshot of a completed run is available in `/docs/postman-collection-run-success.png`
 
+## 🔗 References in Documentation
+
+* The visual result of the run is embedded in:
+
+  * [`/docs/showcase.md`](../docs/showcase.md)
+  * [`/docs/future-coverage-notes.md`](../docs/future-coverage-notes.md) under **Testing Baseline**
+
+## 🧪 Current Test Scenarios
+
+* API status check on launch
+* Arithmetic challenge generation
+* Basic response schema verification
+
+> ⚠️ Note: These tests validate API stability and correctness. For front-end UI tests, refer to Cypress specs under `/cypress/e2e/`.

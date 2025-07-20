@@ -26,6 +26,11 @@ All notable changes to this project will be documented in this file.
   - Linked in `README.md` and `showcase.md`
   - Confirmed `npm run audit:all` for CI-compatible audits
 
+- 📊 **Code Coverage Scaffolding**
+  - Added `npx ng test --code-coverage` and `npm run test:coverage` scripts to root `README.md`
+  - Clarified coverage output path (`coverage/math-tutor-app/index.html`)
+  - Documented coverage status as scaffolded — HTML/CLI output functional, but no CI gating or thresholds yet
+
 ### Docs
 
 - 📘 **showcase.md**

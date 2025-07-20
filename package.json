@@ -22,7 +22,8 @@
     "audit:all": "npm run audit:lighthouse && npm run audit:axe && npm run audit:report",
     "api:start": "ts-node server/server.ts",
     "cy:responsive": "cypress run --spec 'cypress/e2e/responsive-*.cy.ts'",
-    "cy:responsive:open": "cypress open --e2e"
+    "cy:responsive:open": "cypress open --e2e",
+    "help": "node -e 'const pkg = require(\"./package.json\"); console.log(\"Available scripts:\\n\"); for (const [k,v] of Object.entries(pkg.scripts)) { console.log(\"\\n  \" + k + \"\\n    → \" + v); }'"
   },
   "config": {
     "commitizen": {
