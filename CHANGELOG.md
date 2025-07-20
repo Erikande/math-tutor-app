@@ -2,33 +2,49 @@
 
 All notable changes to this project will be documented in this file.
 
-[1.0.8] - 2025-07-19
-Features
-rwd/screenshots: Captured and organized responsive screenshots
+## [1.0.8] - 2025-07-19
 
-Devices: rwd-desktop, rwd-tablet, rwd-mobile-small, rwd-mobile-modern, rwd-mobile-wide
+### Features
 
-Stored under docs/screenshots/
+- 📱 **Responsive Layout Screenshots**
+  - Captured and organized responsive UI screenshots:
+    - Devices: `rwd-desktop`, `rwd-tablet`, `rwd-mobile-small`, `rwd-mobile-modern`, `rwd-mobile-wide`
+  - Stored under `docs/screenshots/`
+  - Embedded into `test-plan.md` under **Responsive Coverage**
+  - Added visual artifacts table in `README.md`
 
-Embedded screenshots in test-plan.md under "Responsive Coverage"
+- 🧪 **Unit Testing (AppComponent)**
+  - Added Jasmine unit tests with render and logic validation
+  - Covered input handling, status messaging, and service interaction
+  - Clarified snapshot strategy in `README.md` (Spectator/Jasmine equivalent)
 
-Docs
-showcase: Created docs/showcase.md for artifact demonstration
+- 📊 **Performance & Accessibility Audit**
+  - Generated and committed:
+    - `lh-desktop.json`, `lh-mobile.json`, `axe-latest.json`
+    - Summary report: `audit/summary.md`
+    - Audit screenshots: `docs/screenshots/lh-desktop.png`, `lh-mobile.png`
+  - Linked in `README.md` and `showcase.md`
+  - Confirmed `npm run audit:all` for CI-compatible audits
 
-Includes annotated visuals of layout and ARIA regions
+### Docs
 
-Linked from project README.md under "📚 Documentation"
+- 📘 **showcase.md**
+  - Created annotated layout and accessibility visual guide
+  - Linked from main `README.md` under 📚 Documentation
 
-test-plan: Added screenshot section under "Responsive Design Viewport Test"
+- 📘 **test-plan.md**
+  - Added **Responsive Design Viewport Test** section with visual examples
 
-readme: Linked to showcase.md and clarified documentation entry points
-
+- 📘 **README.md**
+  - Expanded documentation links
+  - Clarified snapshot test intent (Jasmine/Spectator)
+  - Embedded performance screenshots and results
 
 [1.0.7] - 2025-07-19
 Features
 ui/responsive: Refactored layout to fully support Responsive Web Design (RWD)
 
-Introduced responsive banner-container with accessible <img> and <h1 class="visually-hidden">
+Introduced responsive banner-container with accessible `<img>` and `<h1 class="visually-hidden">`
 
 Updated .math-card-container for mobile-first max-widths and vertical centering
 

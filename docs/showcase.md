@@ -73,3 +73,19 @@ These screenshots are stored in `/docs/screenshots/` and were generated during t
 
 For framed/UI-presented versions, see: [`slides/takehome-presentation.pdf`](../docs/slides/takehome-presentation.pdf).
 
+## 📊 Performance & Accessibility Baseline
+
+We used Lighthouse to establish a performance and SEO baseline.
+
+- 📸 **Desktop:**  
+  ![Lighthouse scores for desktop: 64 for Performance](./screenshots/lh-desktop.png)
+
+- 📸 **Mobile:**  
+  ![Lighthouse scores for mobile: 55 for Performance](./screenshots/lh-mobile.png)
+
+- 📂 Full reports:
+  - [audit/lh-desktop.json](../audit/lh-desktop.json)
+  - [audit/lh-mobile.json](../audit/lh-mobile.json)
+  - [audit/axe-latest.json](../audit/axe-latest.json)
+
+See [`audit/summary.md`](../audit/summary.md) for a summary of key metrics.

@@ -16,10 +16,10 @@ The Math Tutor App is a lightweight Angular application designed to help childre
 
 ## Documentation
 
-- [Test Plan](./docs/test-plan.md)
-- [Test Cases](./docs/test-cases.md)
-- [Future Coverage Notes](./docs/future-coverage-notes.md)
-- [Visual Showcase](./docs/showcase.md) – Annotated UI screenshots and layout proof
+* [Test Plan](./docs/test-plan.md)
+* [Test Cases](./docs/test-cases.md)
+* [Future Coverage Notes](./docs/future-coverage-notes.md)
+* [Visual Showcase](./docs/showcase.md) – Annotated UI screenshots and layout proof
 
 ## Accessibility Enhancements ✅
 
@@ -49,6 +49,18 @@ This app now includes accessible status messaging for users with assistive techn
 ## Cypress Notes
 
 Cypress tests reference selectors in `cypress/support/selectors/mathAppComponent.json`. All core functionality tests are written in `math-app.cy.ts`.
+
+## Component Testing Coverage
+🧪 While this project does not use traditional snapshot test files (like in Jest for React), it fully satisfies the snapshot testing intent via Angular's native Jasmine test suite.
+
+The core spec file, [app.component.spec.ts](./src/app/app.component.spec.ts), includes:
+
+✅ Rendered output validation and conditional messaging
+✅ Mocked services for controlled test state
+✅ Focus and accessibility behavior testing
+✅ Consistent verification of UI state across logic branches
+
+These tests ensure the component’s behavior and structure remain stable over time, providing the same assurances as snapshot testing.
 
 ## Responsive Testing
 
@@ -81,12 +93,24 @@ MIT
 
 ### Responsive Layout Snapshots
 
-Below are visual artifacts captured during Cypress responsive layout tests:
+Below are visual artifacts captured during Cypress responsive layout tests. Each image includes descriptive alt text for screen readers.
 
-| Device              | Screenshot                                      |
-|---------------------|-------------------------------------------------|
-| 📱 Mobile (Small)   | ![](./docs/screenshots/rwd-mobile-small.png)         |
-| 📱 Mobile (Modern)  | ![](./docs/screenshots/rwd-mobile-modern.png)        |
-| 📱 Mobile (Wide)    | ![](./docs/screenshots/rwd-mobile-wide.png)          |
-| 📱 Tablet           | ![](./docs/screenshots/rwd-tablet.png)               |
-| 💻 Desktop          | ![](./docs/screenshots/rwd-desktop.png)              |
+| Device             | Screenshot                                                                  |
+| ------------------ | --------------------------------------------------------------------------- |
+| 📱 Mobile (Small)  | ![Math Tutor App on small mobile](./docs/screenshots/rwd-mobile-small.png)    |
+| 📱 Mobile (Modern) | ![Math Tutor App on modern mobile](./docs/screenshots/rwd-mobile-modern.png)  |
+| 📱 Mobile (Wide)   | ![Math Tutor App on wide mobile](./docs/screenshots/rwd-mobile-wide.png)      |
+| 📱 Tablet          | ![Math Tutor App on tablet](./docs/screenshots/rwd-tablet.png)                |
+| 💻 Desktop         | ![Math Tutor App on desktop](./docs/screenshots/rwd-desktop.png)              |
+
+## 📊 Performance Metrics
+
+The app includes an automated Lighthouse + Axe audit.
+
+* 🖼️ Lighthouse: [Desktop](docs/screenshots/lh-desktop.png), [Mobile](docs/screenshots/lh-mobile.png)
+* ✅ Axe accessibility scan included in [summary](audit/summary.md)
+
+Run the audit locally:
+
+```bash
+npm run audit:all
