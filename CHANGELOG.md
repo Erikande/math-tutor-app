@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.9] - 2025-07-21
+
+### ✨ Launch Prep
+
+- **README.md**: Final polish including:
+  - ✅ Live demo link (GH Pages) added
+  - ✅ Responsive screenshots confirmed present
+  - ✅ Testing strategy clarified (Jasmine + Cypress)
+  - ✅ GHA workflows for unit and E2E tests documented
+- **GitHub Actions**:
+  - 🔧 `unit-tests.yml` verified for Jasmine test runs
+  - 🔧 `cypress.yml` improved with `wait-on` to ensure app readiness
+- **Angular Build**:
+  - 🛠 Fixed `angular.json` output path for GH Pages deployment
+  - ✅ Production build verified (`dist/math-tutor-app/index.html` present)
+  - 🚀 Successfully deployed via `angular-cli-ghpages`
+
+> This release finalizes the app for public viewing via GitHub Pages and confirms CI test pipelines are operational.
+
 ## [1.0.8] - 2025-07-19
 
 ### Features
