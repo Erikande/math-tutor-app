@@ -4,9 +4,13 @@ name: E2E Tests with Cypress
 
 on:
   push:
-    branches: [main]
+    branches: 
+      - main
+      - feat/**
   pull_request:
-    branches: [main]
+    branches: 
+      - main
+      - feat/**
 
 jobs:
   cypress-run:
