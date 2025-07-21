@@ -10,7 +10,17 @@ This is the root README for the Math Tutor App project.
 
 The Math Tutor App is a lightweight Angular application designed to help children practice basic arithmetic. This project was developed as part of a take-home assignment and showcases a complete test automation strategy suitable for a **Senior QA Engineer** role.
 
+## 🌐 Live Demo
+
+Try it out here: [https://erikande.github.io/math-tutor-app](https://erikande.github.io/math-tutor-app)
+
 ## 🔧 Available Commands
+
+To support Cypress CI timing, the dev dependency `wait-on` should be installed:
+
+```bash
+npm install --save-dev wait-on
+```
 
 | Command            | Description                                       |
 | ------------------ | ------------------------------------------------- |
@@ -31,6 +41,17 @@ The Math Tutor App is a lightweight Angular application designed to help childre
 
 ---
 
+## ⚙️ GitHub Actions Workflows
+
+This project uses two GitHub Actions workflows to automate continuous integration:
+
+* **unit-tests.yml** – Runs Jasmine + Karma tests in headless Chrome
+* **cypress.yml** – Starts the Angular dev server and runs Cypress E2E tests
+
+Both workflows run on every push and pull request to `main`, and their status is reflected in the README badge above.
+
+---
+
 ## ✅ QA & Testing Strategy
 
 * Jasmine unit tests (via `ng test`) ensure component logic and view logic are covered
@@ -38,6 +59,22 @@ The Math Tutor App is a lightweight Angular application designed to help childre
 * Lighthouse CLI audit benchmarks initial load performance
 * axe-core CLI audit ensures accessibility hygiene
 * Audit results and screenshots are stored in `/audit` and `/cypress/screenshots`
+* Responsive UI screenshots are already available in the section below, captured during Cypress E2E tests.
+
+> 🟡 One spec is currently marked as `pending`: the `MessageService` creation test.
+>
+> This test was skipped due to Angular DI complexity around `ToastrService` and `TOAST_CONFIG`.
+> Core message delegation is already verified indirectly via `AppComponent` tests.
+
+---
+
+## ✅ Cypress Test Coverage Summary
+
+| Spec File                      | Coverage Area                                |
+| ------------------------------ | -------------------------------------------- |
+| `math-app.cy.ts`               | Basic app functionality (inputs, alerts)     |
+| `responsive-layout.cy.ts`      | Layout behavior across breakpoints           |
+| `responsive-screenshots.cy.ts` | Visual snapshots for audit and CI regression |
 
 ---
 
