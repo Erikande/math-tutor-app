@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## [1.0.10] - 2025-07-31
+
+### 📸 Visual QA Documentation
+
+- ✅ Added responsive and functional QA screenshots for E2E and unit test coverage
+- 📂 Stored under `docs/screenshots/`:
+  - `responsive-layout-all-viewports-passed.png`
+  - `responsive-layout-functional-e2e-tests.png`
+  - `math-challenge-core-e2e-coverage-tc01-to-tc11.png`
+  - `jasmine-karma-unit-test-coverage.png`
+- 📝 Updated `README.md` and `docs/showcase.md` to embed these screenshots and polish the layout for public presentation
+
+
 ## [1.0.9] - 2025-07-21
 
 ### ✨ Launch Prep
