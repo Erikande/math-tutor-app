@@ -126,6 +126,23 @@ Code coverage reporting is currently **scaffolded** using Angular CLI defaults a
 
 Project by [Erik Anderson](https://github.com/Erikande). For questions or feedback, feel free to open an issue.
 
+
+---
+
+## 🆕 Latest Release: v1.0.10 – Docs & QA Visual Patch
+
+> Patch release focusing on UI screenshots and test coverage visual validation.
+>
+> 📌 No code changes — visual and documentation updates only.
+
+### 🔍 What’s Included:
+- Cypress screenshots from latest test runs
+- Jasmine unit test summary capture
+- Showcase updated with full QA media
+- Polished README for LinkedIn visibility
+
+➡️ [View Release Notes](https://github.com/Erikande/math-tutor-app/releases/tag/v1.0.10)
+
 ---
 
 ## 🔗 Repository
