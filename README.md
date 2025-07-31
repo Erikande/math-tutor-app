@@ -78,19 +78,21 @@ Both workflows run on every push and pull request to `main`, and their status is
 
 ---
 
-## 🧪 Responsive Layout Snapshots
 
-Below are visual artifacts captured during Cypress responsive layout tests. Each image includes descriptive alt text for screen readers.
+## 🧪 Responsive + Functional QA Screenshots
 
-| Device             | Screenshot                                                                   |
-| ------------------ | ---------------------------------------------------------------------------- |
-| 📱 Mobile (Small)  | ![Math Tutor App on small mobile](./docs/screenshots/rwd-mobile-small.png)   |
-| 📱 Mobile (Modern) | ![Math Tutor App on modern mobile](./docs/screenshots/rwd-mobile-modern.png) |
-| 📱 Mobile (Wide)   | ![Math Tutor App on wide mobile](./docs/screenshots/rwd-mobile-wide.png)     |
-| 📱 Tablet          | ![Math Tutor App on tablet](./docs/screenshots/rwd-tablet.png)               |
-| 💻 Desktop         | ![Math Tutor App on desktop](./docs/screenshots/rwd-desktop.png)             |
+### ✅ All Viewports Passed
+![Responsive Layout – All Viewports Passed](./docs/screenshots/responsive-layout-all-viewports-passed.png)
 
----
+### 🧪 Functional Layout E2E
+![Functional Layout E2E Tests](./docs/screenshots/responsive-layout-functional-e2e-tests.png)
+
+### 🔢 Math Challenge – Core Test Coverage (TC01–TC11)
+![Core E2E Test Coverage](./docs/screenshots/math-challenge-core-e2e-coverage-tc01-to-tc11.png)
+
+### 🧪 Jasmine Unit Test Coverage
+![Unit Test Coverage – Jasmine](./docs/screenshots/jasmine-karma-unit-test-coverage.png)
+
 
 ## 📊 Code Coverage
 
