@@ -75,6 +75,13 @@ These screenshots are stored in `/docs/screenshots/` and were generated during t
 
 ![Jasmine Unit Test Coverage](../docs/screenshots/jasmine-karma-unit-test-coverage.png)
 
+
+## 📱 Pixel 8 Pro – Animated E2E Flow Demo
+
+![Math Challenge E2E Demo – Google Pixel 8 Pro](../docs/screenshots/math-challenge-e2e-google-pixel8pro.gif)
+> Manual UI demo on Google Pixel 8 Pro, highlighting responsive design and input validation. Cypress tests confirm automated coverage of this flow.
+
+
 ## Performance & Accessibility Baseline
 
 We used Lighthouse to establish a performance and SEO baseline.
