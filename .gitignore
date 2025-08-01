@@ -59,3 +59,7 @@ audit/*.json
 
 # Audit output (not committed)
 audit/
+
+# GitHub Pages build output
+/dist-ghp/
+
