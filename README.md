@@ -5,6 +5,8 @@ This is the root README for the Math Tutor App project.
 ![Angular](https://img.shields.io/badge/Angular-15+-red?logo=angular)
 ![Cypress](https://img.shields.io/badge/Tested_with-Cypress-4e4e4e?logo=cypress)
 ![CI](https://img.shields.io/github/actions/workflow/status/Erikande/math-tutor-app/unit-tests.yml?label=unit%20tests\&logo=githubactions)
+[![Recruiter QA Showcase](https://img.shields.io/badge/Recruiter_Showcase-Click_to_View-0B5FFF?style=for-the-badge&logo=github)](https://erikande.github.io/math-tutor-app/recruiter-showcase/)
+
 
 ## Overview
 
@@ -15,8 +17,10 @@ The Math Tutor App is a lightweight Angular application designed to help childre
 🎯 **Live App:**  
 [https://erikande.github.io/math-tutor-app](https://erikande.github.io/math-tutor-app)
 
-📸 **Recruiter-Facing QA Showcase:**  
+📸 **Recruiter QA Showcase:**  
+A single-page visual summary with Cypress screenshots, test highlights, and a contact footer — built for quick recruiter review.
 [https://erikande.github.io/math-tutor-app/recruiter-showcase/](https://erikande.github.io/math-tutor-app/recruiter-showcase/)
+
 
 ## 🔧 Available Commands
 
@@ -152,3 +156,24 @@ Project by [Erik Anderson](https://github.com/Erikande). For questions or feedba
 ## 🔗 Repository
 
 [https://github.com/Erikande/math-tutor-app](https://github.com/Erikande/math-tutor-app)
+
+---
+
+## 🔄 GitHub Pages Deployment
+
+The project uses **separate deployment targets** for clarity:
+
+### 🌐 Live App Deployment (`/`)
+
+| Branch      | Path             | Notes                                      |
+|-------------|------------------|--------------------------------------------|
+| `gh-pages`  | `/`              | Deployed Angular app via `dist-ghp/`       |
+
+Deployed using:
+
+```bash
+npx ng build --output-path dist-ghp --base-href /math-tutor-app/
+git worktree add gh-pages
+cp -r dist-ghp/* gh-pages/
+git commit -m "Deploy Angular app via clean branch"
+git push origin gh-pages --force
