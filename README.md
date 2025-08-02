@@ -12,7 +12,11 @@ The Math Tutor App is a lightweight Angular application designed to help childre
 
 ## 🌐 Live Demo
 
-Try it out here: [https://erikande.github.io/math-tutor-app](https://erikande.github.io/math-tutor-app)
+🎯 **Live App:**  
+[https://erikande.github.io/math-tutor-app](https://erikande.github.io/math-tutor-app)
+
+📸 **Recruiter-Facing QA Showcase:**  
+[https://erikande.github.io/math-tutor-app/recruiter-showcase/](https://erikande.github.io/math-tutor-app/recruiter-showcase/)
 
 ## 🔧 Available Commands
 

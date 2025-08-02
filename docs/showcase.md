@@ -104,3 +104,11 @@ The following image shows the successful execution of the math-tutor Postman col
 ![Postman Success](./postman-collection-run-success.png)
 
 > Visual confirmation of successful Postman collection execution
+
+---
+
+## 🔗 Live QA Showcase (Static View)
+
+View the public-facing recruiter QA showcase page here:
+👉 [https://erikande.github.io/math-tutor-app/recruiter-showcase/](https://erikande.github.io/math-tutor-app/recruiter-showcase/)
+> A simple visual summary page with key screenshots, test coverage highlights, and contact info.
